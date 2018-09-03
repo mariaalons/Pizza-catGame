@@ -47,7 +47,7 @@ Player.prototype.jumpKey = function () {
   document.onkeydown = function (event) {
     if (event.keyCode == UP && this.y == this.yInitial) {
 
-      this.y -= 40;
+      this.y -= 50;
       this.ySpeed -=10;
       
     }
