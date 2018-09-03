@@ -41,7 +41,7 @@ Game.prototype.drawGame = function () {
 
 Game.prototype.moveGame = function () {
   this.background.move();
-  // llamar a la función move de player 
+  this.player.move();
 }
 
 

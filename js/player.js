@@ -2,8 +2,8 @@ function Player(game) {
   this.game = game;
   this.x = this.game.canvas.width * 0.1;
 
-  this.y0 = this.game.canvas.height * 0.6;
-  this.y = this.y0;
+  this.yInitial = 340;
+  this.y = this.yInitial;
 
   this.img = new Image();
   this.img.src = "img/sprit.png";
@@ -14,8 +14,11 @@ function Player(game) {
   this.w = 150;
   this.h = 135;
 
-}
+  this.ySpeed = 1;
 
+  this.jumpKey();
+}
+//cat
 Player.prototype.draw = function () {
   this.game.ctx.drawImage(
     this.img,
@@ -24,17 +27,14 @@ Player.prototype.draw = function () {
     190,
     170,
     this.x,
-    340,
+    this.y,
     this.h,
     this.w,
   );
   this.animateImg();
 }
 
-Player.prototype.jumpKey = function () {
-  
-}
-
+//cat walking
 Player.prototype.animateImg = function () {
   if (this.game.framesCounter % 10 === 0) {
     this.img.frameIndex += 1;
@@ -42,3 +42,27 @@ Player.prototype.animateImg = function () {
   }
 };
 
+//jumping cat 
+Player.prototype.jumpKey = function () {
+  document.onkeydown = function (event) {
+    if (event.keyCode == UP && this.y == this.yInitial) {
+
+      this.y -= 40;
+      this.ySpeed -=10;
+      
+    }
+
+  }.bind(this);
+}
+
+Player.prototype.move = function () {
+   var gravity = 0.4;
+   if (this.y >= this.yInitial) {
+    this.ySpeed = 1;
+    this.y = this.yInitial;
+  } else {
+    this.ySpeed += gravity;
+    this.y += this.ySpeed;
+  }
+}
+var UP = 38;
