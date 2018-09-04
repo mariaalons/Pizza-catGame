@@ -14,6 +14,12 @@ Game.prototype.start = function () {
     this.clear();
 
     this.framesCounter++;
+    //when 
+    if (this.framesCounter % 50 == 0){
+      this.createObstacles();
+    }
+
+
     this.drawGame();
     this.moveGame();
 
@@ -24,6 +30,12 @@ Game.prototype.reset = function () {
   this.background = new Background(this);
   this.player = new Player(this);
   this.framesCounter = 0;
+  this.obstacles = [];
+}
+
+Game.prototype.createObstacles = function () {
+ //push a this.Obstacles=[]
+ this.obstacles.push(new Obstacles(this));
 }
 
 //function clear canavas
@@ -37,11 +49,14 @@ Game.prototype.clear = function () {
 Game.prototype.drawGame = function () {
   this.background.draw();
   this.player.draw();
+  this.obstacles.forEach(function(obstacle) { obstacle.draw(); });
+  
 }
 
 Game.prototype.moveGame = function () {
   this.background.move();
   this.player.move();
+  this.obstacles.forEach(function(obstacle) { obstacle.move(); });
 }
 
 
