@@ -46,10 +46,9 @@ Player.prototype.animateImg = function () {
 Player.prototype.jumpKey = function () {
   document.onkeydown = function (event) {
     if (event.keyCode == UP && this.y == this.yInitial) {
-
+    
       this.y -= 80;
       this.ySpeed -=10;
-      
     }
 
   }.bind(this);

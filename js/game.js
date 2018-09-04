@@ -15,16 +15,20 @@ Game.prototype.start = function () {
 
     this.framesCounter++;
     //when 
-    if (this.framesCounter % 50 == 0){
-      this.createObstacles();
+    
+    if (this.framesCounter % 50 == 0) {
+      this.createObstacles(brocoli,50,60);
+    } else if (this.framesCounter % 135 == 0) {
+      this.createObstacles(pizza,80,50);
     }
+    
 
     this.drawGame();
     this.moveGame();
     this.clearObstacles();
     this.obsCollition();
 
-   
+
 
   }.bind(this), 1000 / this.fps);
 };
@@ -36,20 +40,23 @@ Game.prototype.reset = function () {
   this.obstacles = [];
 }
 
-Game.prototype.clearObstacles = function() {
-  this.obstacles = this.obstacles.filter(function(obstacle) {
+Game.prototype.clearObstacles = function () {
+  this.obstacles = this.obstacles.filter(function (obstacle) {
     return obstacle.x >= 0;
   });
 };
 
-Game.prototype.createObstacles = function () {
- //push a this.Obstacles=[]
- this.obstacles.push(new Obstacles(this));
+Game.prototype.createObstacles = function (img,w,h) {
+  //push a this.Obstacles=[]
+  this.obstacles.push(new Obstacles(this,img,w,h));
 }
 
 Game.prototype.obsCollition = function () {
   this.obstacles = this.obstacles.filter(function (obj) {
-    return (!(this.player.x + this.player.w >= obj.x && obj.x + obj.w >= this.player.x && this.player.y + this.player.h >= obj.y && obj.y + obj.h >= this.player.y))
+    return (!(this.player.x + this.player.w >= obj.x && 
+      obj.x + obj.w >= this.player.x && 
+      this.player.y + this.player.h >= obj.y && 
+      obj.y + obj.h >= this.player.y))
   }.bind(this))
 
 }
@@ -66,14 +73,15 @@ Game.prototype.clear = function () {
 Game.prototype.drawGame = function () {
   this.background.draw();
   this.player.draw();
-  this.obstacles.forEach(function(obstacle) { obstacle.draw(); });
-  
+  this.obstacles.forEach(function (obstacle) { obstacle.draw() ; });
+
 }
 
 Game.prototype.moveGame = function () {
   this.background.move();
   this.player.move();
-  this.obstacles.forEach(function(obstacle) { obstacle.move(); });
+  this.obstacles.forEach(function (obstacle) { obstacle.moveBrocoli(); });
+  
 }
 
 

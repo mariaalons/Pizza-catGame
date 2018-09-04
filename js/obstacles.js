@@ -1,28 +1,30 @@
 
 //multiple obstacles 
-function Obstacles(game){
+function Obstacles(game, img, w, h){
 this.game = game;
-this.w = 50;
-this.h = 60;
-
-this.img =  new Image();
-this.img.src = "img/brocoli.png";
-
+this.w = w;
+this.h = h;
+this.img = img;
 this.dx = 7;
 
 this.x = 950;
-this.randomY();
+this.randomBrocoli();
+
 }
 
 Obstacles.prototype.draw = function () {
-  this.game.ctx.drawImage(this.img, this.x, this.y, this.w, this.h)
+  this.game.ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
+ 
+
 }
 
-Obstacles.prototype.move = function () {
+Obstacles.prototype.moveBrocoli = function () {
   this.x -= this.dx;
 }
 
-Obstacles.prototype.randomY = function () {
+
+
+Obstacles.prototype.randomBrocoli = function () {
   this.y = Math.round(Math.random()) 
   if (this.y == 0){
     this.y = 370
