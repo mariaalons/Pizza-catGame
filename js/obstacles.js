@@ -2,8 +2,8 @@
 //multiple obstacles 
 function Obstacles(game){
 this.game = game;
-this.w = 60;
-this.h = 75;
+this.w = 50;
+this.h = 60;
 
 this.img =  new Image();
 this.img.src = "img/brocoli.png";

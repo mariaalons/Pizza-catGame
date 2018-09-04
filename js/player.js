@@ -11,8 +11,8 @@ function Player(game) {
   this.img.frames = 3;
   this.img.frameIndex = 0;
 
-  this.w = 150;
-  this.h = 135;
+  this.w = 140;
+  this.h = 125;
 
   this.ySpeed = 1;
 
@@ -47,7 +47,7 @@ Player.prototype.jumpKey = function () {
   document.onkeydown = function (event) {
     if (event.keyCode == UP && this.y == this.yInitial) {
 
-      this.y -= 50;
+      this.y -= 80;
       this.ySpeed -=10;
       
     }
@@ -56,7 +56,7 @@ Player.prototype.jumpKey = function () {
 }
 
 Player.prototype.move = function () {
-   var gravity = 0.4;
+   var gravity = 0.5;
    if (this.y >= this.yInitial) {
     this.ySpeed = 1;
     this.y = this.yInitial;

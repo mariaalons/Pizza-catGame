@@ -19,9 +19,12 @@ Game.prototype.start = function () {
       this.createObstacles();
     }
 
-
     this.drawGame();
     this.moveGame();
+    this.clearObstacles();
+    this.obsCollition();
+
+   
 
   }.bind(this), 1000 / this.fps);
 };
@@ -33,10 +36,24 @@ Game.prototype.reset = function () {
   this.obstacles = [];
 }
 
+Game.prototype.clearObstacles = function() {
+  this.obstacles = this.obstacles.filter(function(obstacle) {
+    return obstacle.x >= 0;
+  });
+};
+
 Game.prototype.createObstacles = function () {
  //push a this.Obstacles=[]
  this.obstacles.push(new Obstacles(this));
 }
+
+Game.prototype.obsCollition = function () {
+  this.obstacles = this.obstacles.filter(function (obj) {
+    return (!(this.player.x + this.player.w >= obj.x && obj.x + obj.w >= this.player.x && this.player.y + this.player.h >= obj.y && obj.y + obj.h >= this.player.y))
+  }.bind(this))
+
+}
+
 
 //function clear canavas
 
