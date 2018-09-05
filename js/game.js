@@ -26,7 +26,7 @@ Game.prototype.start = function () {
     this.drawGame();
     this.moveGame();
     this.clearObstacles();
-    this.obsCollition();
+    this.obsCollision();
 
 
 
@@ -55,16 +55,16 @@ Game.prototype.createObstacles = function (img,w,h) {
  //para que no haga una pizza encima de un brócoli 
 //}
 
-Game.prototype.obsCollition = function () {
+Game.prototype.obsCollision = function () {
   this.obstacles = this.obstacles.filter(function (obj) {
-    var collitions = (!(this.player.x + this.player.w - 30 >= obj.x && 
+    var collisions = (!(this.player.x + this.player.w - 30 >= obj.x && 
       obj.x + obj.w >= this.player.x + 30 && 
       this.player.y + this.player.h - 30 >= obj.y && 
       obj.y + obj.h >= this.player.y))
-      if (collitions == false && obj.img.name == "brocoli"){
+      if (collisions == false && obj.img.name == "brocoli"){
         this.stop()
       }
-      return collitions;
+      return collisions;
   }.bind(this))
 
 }
