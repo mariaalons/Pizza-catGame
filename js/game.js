@@ -93,9 +93,15 @@ Game.prototype.moveGame = function () {
 }
 
 Game.prototype.stop = function () {
+  this.player.catPizza();
+  this.drawGame()
+  this.player.sy = 200;
+
   clearInterval(this.interval); 
   setTimeout(function(){
+
      this.start(); 
+     
     }.bind(this), 1000);
   }
 

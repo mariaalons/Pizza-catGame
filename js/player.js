@@ -11,6 +11,8 @@ function Player(game) {
   this.img.frames = 3;
   this.img.frameIndex = 0;
 
+  this.sy = 200
+
   this.w = 140;
   this.h = 125;
 
@@ -23,7 +25,7 @@ Player.prototype.draw = function () {
   this.game.ctx.drawImage(
     this.img,
     Math.floor(this.img.width / this.img.frames) * this.img.frameIndex,
-    200,
+    this.sy,
     190,
     170,
     this.x,
@@ -34,13 +36,21 @@ Player.prototype.draw = function () {
   this.animateImg();
 }
 
+Player.prototype.catPizza = function () {
+  this.img.frame = 1;
+  this.img.frameIndex = 2;
+  this.sy = 400; 
+}
+
 //cat walking
 Player.prototype.animateImg = function () {
   if (this.game.framesCounter % 10 === 0) {
     this.img.frameIndex += 1;
     if (this.img.frameIndex > 2) this.img.frameIndex = 0;
-  }
+  } 
 };
+
+
 
 //jumping cat 
 Player.prototype.jumpKey = function () {

@@ -8,3 +8,5 @@
 
   var avocado = new Image ();
   avocado.src = "img/avocado.png"
+
+  
