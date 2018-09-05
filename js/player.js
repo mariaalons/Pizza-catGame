@@ -54,17 +54,20 @@ Player.prototype.animateImg = function () {
 
 //jumping cat 
 Player.prototype.jumpKey = function () {
+  this.counter = 0
   document.onkeydown = function (event) {
-    if (event.keyCode == UP && this.y == this.yInitial) {
-    
+    this.counter++
+    if (event.keyCode == UP && (this.y == this.yInitial || this.counter <= 2)) {
       this.y -= 80;
-      this.ySpeed -=10;
+      this.ySpeed -= 10;
     }
 
   }.bind(this);
 }
 
 Player.prototype.move = function () {
+  if (this.y == this.yInitial)
+      this.counter = 0;
    var gravity = 0.5;
    if (this.y >= this.yInitial) {
     this.ySpeed = 1;

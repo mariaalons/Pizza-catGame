@@ -1,11 +1,11 @@
 
 //multiple obstacles 
-function Obstacles(game, img, w, h){
+function Obstacles(game, img, dx){
 this.game = game;
-this.w = w;
-this.h = h;
+this.w = img.w;
+this.h = img.h;
 this.img = img;
-this.dx = 7;
+this.dx = dx;
 
 this.x = 950;
 this.randomY();
@@ -30,6 +30,10 @@ Obstacles.prototype.randomY = function () {
     this.y = 370
   }else if( this.y == 1){
     this.y= 250;
+  }
+  
+  if(this.img.avocadoY){
+    this.y = this.img.avocadoY;
   }
 }
 
