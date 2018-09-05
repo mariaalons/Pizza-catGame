@@ -4,7 +4,6 @@ function Game(canvastv) {
   this.ctx = this.canvas.getContext("2d");
   this.fps = 60;
 
-
   this.reset();
 }
 
@@ -27,6 +26,7 @@ Game.prototype.start = function () {
     this.moveGame();
     this.clearObstacles();
     this.obsCollision();
+   
 
 
 
@@ -36,6 +36,7 @@ Game.prototype.start = function () {
 Game.prototype.reset = function () {
   this.background = new Background(this);
   this.player = new Player(this);
+  this.points = new Points(this);
   this.framesCounter = 0;
   this.obstacles = [];
 }
@@ -62,7 +63,11 @@ Game.prototype.obsCollision = function () {
       this.player.y + this.player.h - 30 >= obj.y && 
       obj.y + obj.h >= this.player.y))
       if (collisions == false && obj.img.name == "brocoli"){
+        this.points.restPoints();
         this.stop()
+       
+      } else if (collisions === false && obj.img.name == "pizza"){
+       this.points.sumPoints();
       }
       return collisions;
   }.bind(this))
@@ -80,6 +85,7 @@ Game.prototype.clear = function () {
 
 Game.prototype.drawGame = function () {
   this.background.draw();
+  this.points.draw();
   this.player.draw();
   this.obstacles.forEach(function (obstacle) { obstacle.draw() ; });
 
@@ -104,6 +110,9 @@ Game.prototype.stop = function () {
      
     }.bind(this), 1000);
   }
+
+
+
 
 
 
