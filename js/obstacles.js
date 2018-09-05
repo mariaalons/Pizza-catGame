@@ -8,7 +8,7 @@ this.img = img;
 this.dx = 7;
 
 this.x = 950;
-this.randomBrocoli();
+this.randomY();
 
 }
 
@@ -18,13 +18,13 @@ Obstacles.prototype.draw = function () {
 
 }
 
-Obstacles.prototype.moveBrocoli = function () {
+Obstacles.prototype.move = function () {
   this.x -= this.dx;
 }
 
 
 
-Obstacles.prototype.randomBrocoli = function () {
+Obstacles.prototype.randomY = function () {
   this.y = Math.round(Math.random()) 
   if (this.y == 0){
     this.y = 370

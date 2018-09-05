@@ -2,7 +2,7 @@
 function Game(canvastv) {
   this.canvas = document.getElementById(canvastv);
   this.ctx = this.canvas.getContext("2d");
-  this.fps = 60
+  this.fps = 60;
 
 
   this.reset();
@@ -17,7 +17,7 @@ Game.prototype.start = function () {
     //when 
     
     if (this.framesCounter % 50 == 0) {
-      this.createObstacles(brocoli,50,60);
+      this.createObstacles(brocoli,45,55);
     } else if (this.framesCounter % 135 == 0) {
       this.createObstacles(pizza,80,50);
     }
@@ -51,12 +51,20 @@ Game.prototype.createObstacles = function (img,w,h) {
   this.obstacles.push(new Obstacles(this,img,w,h));
 }
 
+//Game.prototype.cheeckIfObstacle = function () {
+ //para que no haga una pizza encima de un brócoli 
+//}
+
 Game.prototype.obsCollition = function () {
   this.obstacles = this.obstacles.filter(function (obj) {
-    return (!(this.player.x + this.player.w >= obj.x && 
-      obj.x + obj.w >= this.player.x && 
-      this.player.y + this.player.h >= obj.y && 
+    var collitions = (!(this.player.x + this.player.w - 30 >= obj.x && 
+      obj.x + obj.w >= this.player.x + 30 && 
+      this.player.y + this.player.h - 30 >= obj.y && 
       obj.y + obj.h >= this.player.y))
+      if (collitions == false && obj.img.name == "brocoli"){
+        this.stop()
+      }
+      return collitions;
   }.bind(this))
 
 }
@@ -80,9 +88,19 @@ Game.prototype.drawGame = function () {
 Game.prototype.moveGame = function () {
   this.background.move();
   this.player.move();
-  this.obstacles.forEach(function (obstacle) { obstacle.moveBrocoli(); });
+  this.obstacles.forEach(function (obstacle) { obstacle.move(); });
   
 }
+
+Game.prototype.stop = function () {
+  clearInterval(this.interval); 
+  setTimeout(function(){
+     this.start(); 
+    }.bind(this), 1000);
+  }
+
+
+
 
 
 
