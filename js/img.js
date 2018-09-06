@@ -19,10 +19,12 @@ var img = {
     avocadoY: 50,
   },
   gameOver: {
-    src: "img/gameover.png",
+    src: "img/gameoverscreen.png",
     name: "gameOver",
-    w: 100,
-    h: 80,
+  },
+  youWin: {
+    src: "img/you-win.png",
+    name: "youWin",
   }
 }
 

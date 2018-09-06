@@ -7,6 +7,12 @@ function Game(canvastv) {
   this.reset();
 }
 
+Game.prototype.startGame = function () {
+  this.image = new Image ();
+  this.image.src = "/img/inicio.png"
+  this.ctx.drawImage(this.image, 0, 0, this.canvas.width, this.canvas.height)
+}
+
 
 Game.prototype.start = function () {
   this.interval = setInterval(function () {
@@ -140,11 +146,7 @@ Game.prototype.gameOver = function () {
   this.sound = loadedAudios.soundTrack.pause();
   var draw = (function (img) {
     this.clear();
-    this.ctx.font = "150px helvetica"
-    this.ctx.fillStyle = "black"
-    this.ctx.textAlign = "center";
-    this.ctx.fillText("GAME OVER", 475, 250)
-    this.ctx.drawImage(img, 350, 340, 200, 190)
+    this.ctx.drawImage(img, 0, 0, this.canvas.width, this.canvas.height)
    
   }).bind(this);
   draw(loadedimg.gameOver);
@@ -156,11 +158,10 @@ Game.prototype.youWin = function () {
   this.sound = loadedAudios.soundTrack.pause();
   var draw = (function (img) {
     this.clear();
-    this.ctx.drawImage(img, 350, 410, 200, 190)  
+    this.ctx.drawImage(img, 0, 0, this.canvas.width, this.canvas.height)  
   }).bind(this);
-  draw(loadedimg.pizza);
+  draw(loadedimg.youWin);
 }
-
 
 
 
