@@ -3,7 +3,20 @@
 
 }
 
-#game {
+.container {
   display: flex;
-  align-content: space-between;
+  justify-content: space-around;
+  
+}
+
+.start {
+  justify-self: end;
+}
+
+#game h1 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#canvastv {
+  background-color: grey;
 }

@@ -137,6 +137,7 @@ Game.prototype.stop = function () {
 Game.prototype.gameOver = function () {
   clearInterval(this.interval);
   clearTimeout(this.timeOut)
+  this.sound = soundTrack.pause();
   var draw = (function (img,img3) {
     this.clear();
     this.ctx.drawImage(img3, 0, 0, 950, 600)
@@ -153,6 +154,7 @@ Game.prototype.gameOver = function () {
 Game.prototype.youWin = function () {
   clearInterval(this.interval);
   clearTimeout(this.timeOut)
+  this.sound = soundTrack.pause();
   var draw = (function (img, img3) {
     this.clear();
     this.ctx.drawImage(img, 350, 410, 200, 190)  

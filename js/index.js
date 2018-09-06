@@ -2,7 +2,7 @@
 
 window.onload = function () {
   var game = new Game("canvastv");
-  document.getElementById("start").onclick = function () {
+  document.getElementById("start-game").onclick = function () {
     disableBtn();
     game.start();
     
@@ -10,5 +10,5 @@ window.onload = function () {
 }
 
 function disableBtn() {
-  document.getElementById("start").disabled = true;
+  document.getElementById("start-game").disabled = true;
 }

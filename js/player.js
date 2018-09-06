@@ -56,9 +56,6 @@ Player.prototype.animateImg = function () {
   }
 };
 
-
-
-//jumping cat 
 Player.prototype.jumpKey = function () {
   this.counter = 0
   document.onkeydown = function (event) {
