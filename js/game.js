@@ -16,11 +16,12 @@ Game.prototype.start = function () {
 
     this.probObstacles();
 
-
+    
     this.drawGame();
     this.moveGame();
     this.clearObstacles();
     this.obsCollision();
+    //this.gameOver();
 
 
 
@@ -50,7 +51,7 @@ Game.prototype.probObstacles = function () {
     } else {
       this.createObstacles(pizza, 7);
     }
-  }else if (this.framesCounter % 1001 == 0){
+  } else if (this.framesCounter % 1001 == 0) {
     this.createObstacles(avocado, 5);
   }
 }
@@ -67,17 +68,20 @@ Game.prototype.createObstacles = function (img, dx) {
 }
 
 Game.prototype.obsCollision = function () {
-  this.obstacles = this.obstacles.filter(function (obj) {
-    var collisions = (!(this.player.x + this.player.w - 30 >= obj.x &&
-      obj.x + obj.w >= this.player.x + 30 &&
-      this.player.y + this.player.h - 30 >= obj.y &&
-      obj.y + obj.h >= this.player.y))
-    if (collisions == false && obj.img.name == "brocoli") {
+  this.obstacles = this.obstacles.filter(function (obs) {
+    var collisions = (!(this.player.x + this.player.w - 30 >= obs.x &&
+      obs.x + obs.w >= this.player.x + 30 &&
+      this.player.y + this.player.h - 30 >= obs.y &&
+      obs.y + obs.h >= this.player.y))
+    if (collisions == false && obs.img.name == "brocoli" && this.player.sy == 200) {
       this.points.restPoints();
       this.stop()
 
-    } else if (collisions === false && obj.img.name == "pizza") {
+    } else if (collisions === false && obs.img.name == "pizza") {
       this.points.sumPoints();
+    } else if (collisions === false && obs.img.name == "avocado"){
+      this.specialPower();
+
     }
     return collisions;
   }.bind(this))
@@ -102,18 +106,33 @@ Game.prototype.moveGame = function () {
   this.obstacles.forEach(function (obstacle) { obstacle.move(); });
 }
 
+Game.prototype.specialPower = function () {
+  this.player.catAvocado();
+  this.drawGame()
+  setTimeout(function () {
+   this.player.sy = 200;
+   }.bind(this), 5000);
+}
+ 
+
+
 Game.prototype.stop = function () {
   this.player.catPizza();
   this.drawGame()
   this.player.sy = 200;
-
   clearInterval(this.interval);
   setTimeout(function () {
 
-   this.start();
+    this.start();
 
   }.bind(this), 1000);
 }
+
+Game.prototype.gameOver = function () {
+  if (this.points.score <= 2 && this.obsCollision.collisions == false && obs.img.name == "brocoli");
+  clearInterval(this.interval);
+  }
+
 
 
 

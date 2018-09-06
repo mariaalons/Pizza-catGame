@@ -18,4 +18,10 @@
   avocado.h = 80;
   avocado.avocadoY = 50;
 
+  var gameOver = new Image();
+  gameOver.src = "img/gameover.png";
+  gameOver.name = "gameOver";
+  gameOver.w = 400;
+  gameOver.h = 300;
+
   

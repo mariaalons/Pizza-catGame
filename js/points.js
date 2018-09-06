@@ -1,8 +1,8 @@
-function Points (game) {
+function Points(game) {
   this.game = game;
-  this.img = new Image ();
+  this.img = new Image();
   this.img.src = "img/pizzaScore.png"
-  this.score = 0 
+  this.score = 0
 }
 
 
@@ -14,21 +14,21 @@ Points.prototype.draw = function () {
     140,
     140,
   )
-  
-  this.game.ctx.fillText(this.score +"/8 slices", 785, 180)
+
+  this.game.ctx.fillText(this.score + "/8 slices", 785, 180)
   this.game.ctx.font = "23px Roboto"
 }
 
 Points.prototype.restPoints = function () {
- if(this.score >= 2){
-   this.score -= 2;
- }
+  if (this.score >= 2) {
+    this.score -= 2;
+  }
 }
 
 Points.prototype.sumPoints = function () {
-  if (this.score < 8){
+  if (this.score < 8) {
     this.score++
-  } 
+  }
 }
 
 

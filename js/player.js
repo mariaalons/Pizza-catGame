@@ -39,15 +39,21 @@ Player.prototype.draw = function () {
 Player.prototype.catPizza = function () {
   this.img.frame = 1;
   this.img.frameIndex = 2;
-  this.sy = 400; 
+  this.sy = 400;
+}
+
+Player.prototype.catAvocado = function () {
+  this.img.frame = 1;
+  this.img.frameIndex = 0;
+  this.sy = 370;
 }
 
 //cat walking
 Player.prototype.animateImg = function () {
-  if (this.game.framesCounter % 10 === 0) {
+  if (this.game.framesCounter % 10 === 0 && this.sy != 370) {
     this.img.frameIndex += 1;
     if (this.img.frameIndex > 2) this.img.frameIndex = 0;
-  } 
+  }
 };
 
 
@@ -67,9 +73,9 @@ Player.prototype.jumpKey = function () {
 
 Player.prototype.move = function () {
   if (this.y == this.yInitial)
-      this.counter = 0;
-   var gravity = 0.5;
-   if (this.y >= this.yInitial) {
+    this.counter = 0;
+  var gravity = 0.5;
+  if (this.y >= this.yInitial) {
     this.ySpeed = 1;
     this.y = this.yInitial;
   } else {
