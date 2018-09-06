@@ -1,29 +1,45 @@
+var img = {
+  brocoli: {
+    src: "img/brocoli.png",
+    name: "brocoli",
+    w: 45,
+    h: 55
+  },
+  pizza: {
+    src: "img/pizza.png",
+    name: "pizza",
+    w: 80,
+    h: 50,
+  },
+  avocado: {
+    src: "img/avocado.png",
+    name: "avocado",
+    w: 100,
+    h: 80,
+    avocadoY: 50,
+  },
+  gameOver: {
+    src: "img/gameover.png",
+    name: "gameOver",
+    w: 100,
+    h: 80,
+  }
+}
 
-  var brocoli = new Image();
-  brocoli.src = "img/brocoli.png";
-  brocoli.name = "brocoli";
-  brocoli.w = 45;
-  brocoli.h = 55;
+var loadedimg = {}
+var totalLoaded = 0;
+var totalimg = Object.keys(img).length;
 
-  var pizza = new Image();
-  pizza.src = "img/pizza.png"
-  pizza.name = "pizza";
-  pizza.w = 80;
-  pizza.h = 50;
-
-  var avocado = new Image ();
-  avocado.src = "img/avocado.png"
-  avocado.name = "avocado"
-  avocado.w = 100;
-  avocado.h = 80;
-  avocado.avocadoY = 50;
-
-  var gameOver = new Image();
-  gameOver.src = "img/gameover.png";
-  gameOver.name = "gameOver";
-  gameOver.w = 100;
-  gameOver.h = 80;
-
-  var background = new Image();
-  background.src = "img/background.png";
-  background.name = "background";
+Object.keys(img).forEach(function (e) {
+  var keysImg = new Image();
+  Object.keys(img[e]).forEach(function (e1) {
+    keysImg[e1] = img[e][e1];
+    keysImg.onload = function () {
+      totalLoaded++;
+      if (totalLoaded == totalimg) {
+        console.log("All images loaded");
+      }
+    };
+  })
+  loadedimg[e] = keysImg;
+})

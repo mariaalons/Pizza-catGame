@@ -15,7 +15,7 @@ Game.prototype.start = function () {
     this.framesCounter++;
    
     this.drawGame();
-    this.sound = soundTrack.play()
+    this.sound = loadedAudios.soundTrack.play()
     this.obsCollision();
     
       if (this.points.score < 0) {
@@ -47,18 +47,18 @@ Game.prototype.probObstacles = function () {
   if (this.framesCounter % 50 == 0) {
     if (this.points.score >= 4) {
       if (this.framesCounter % 2 == 0)
-        this.createObstacles(brocoli, 9)
+        this.createObstacles(loadedimg.brocoli, 9)
     } else {
-      this.createObstacles(brocoli, 7);
+      this.createObstacles(loadedimg.brocoli, 7);
     }
   } else if (this.framesCounter % 135 == 0) {
     if (this.points.score >= 4) {
-      this.createObstacles(pizza, 9)
+      this.createObstacles(loadedimg.pizza, 9)
     } else {
-      this.createObstacles(pizza, 7);
+      this.createObstacles(loadedimg.pizza, 7);
     }
   } else if (this.framesCounter % 1001 == 0) {
-    this.createObstacles(avocado, 5);
+    this.createObstacles(loadedimg.avocado, 5);
   }
 }
 
@@ -79,7 +79,7 @@ Game.prototype.obsCollision = function () {
       this.player.y + this.player.h - 30 >= obs.y &&
       obs.y + obs.h >= this.player.y))
     if (collisions == false && obs.img.name == "brocoli" && this.player.sy == 200) {
-      this.sound = angryCat.play();
+      this.sound = loadedAudios.angryCat.play();
       this.points.restPoints();
       this.stop()
     } else if (collisions === false && obs.img.name == "pizza") {
@@ -115,7 +115,7 @@ Game.prototype.moveGame = function () {
 Game.prototype.specialPower = function () {
   this.player.catAvocado();
   this.drawGame()
-  this.sound = avocadoPower.play();
+  this.sound = loadedAudios.avocadoPower.play();
   setTimeout(function () {
    this.player.sy = 200;
    }.bind(this), 5000);
@@ -137,10 +137,9 @@ Game.prototype.stop = function () {
 Game.prototype.gameOver = function () {
   clearInterval(this.interval);
   clearTimeout(this.timeOut)
-  this.sound = soundTrack.pause();
-  var draw = (function (img,img3) {
+  this.sound = loadedAudios.soundTrack.pause();
+  var draw = (function (img) {
     this.clear();
-    this.ctx.drawImage(img3, 0, 0, 950, 600)
     this.ctx.font = "150px helvetica"
     this.ctx.fillStyle = "black"
     this.ctx.textAlign = "center";
@@ -148,18 +147,18 @@ Game.prototype.gameOver = function () {
     this.ctx.drawImage(img, 350, 340, 200, 190)
    
   }).bind(this);
-  draw(gameOver, background);
+  draw(loadedimg.gameOver);
 }
 
 Game.prototype.youWin = function () {
   clearInterval(this.interval);
   clearTimeout(this.timeOut)
-  this.sound = soundTrack.pause();
-  var draw = (function (img, img3) {
+  this.sound = loadedAudios.soundTrack.pause();
+  var draw = (function (img) {
     this.clear();
     this.ctx.drawImage(img, 350, 410, 200, 190)  
   }).bind(this);
-  draw(pizza);
+  draw(loadedimg.pizza);
 }
 
 

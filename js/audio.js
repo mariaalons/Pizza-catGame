@@ -1,9 +1,23 @@
-var soundTrack = new Audio ("audio/tracksound.mp3");
 
-var jumpkey = new Audio ("audio/jump.mp3")
+var audioEffects = {
+  soundTrack: "tracksound.mp3",
+  jumpkey: "jump.mp3",
+  angryCat: "catBrocoli.mp3",
+  avocadoPower: "special.mp3",
+  pizzaEat: "pizzaeat.mp3"
+}
 
-var angryCat = new Audio ("audio/catBrocoli.mp3");
+var loadedAudios = {}
+var totalLoaded = 0;
+var totalAudios = Object.keys(audioEffects).length;
 
-var avocadoPower = new Audio ("audio/special.mp3");
-
-var pizzaEat = new Audio ("audio/pizzaeat.mp3")
+Object.keys(audioEffects).forEach(function (e) {
+  var audio = new Audio('audio/' + audioEffects[e]);
+  audio.oncanplay = function () {
+    totalLoaded++;
+    if (totalLoaded == totalAudios) {
+      console.log("All audios loaded");
+    }
+  };
+  loadedAudios[e] = audio;
+})
