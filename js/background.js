@@ -23,3 +23,4 @@ Background.prototype.move = function () {
   }
 }
 
+

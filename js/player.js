@@ -62,18 +62,19 @@ Player.prototype.animateImg = function () {
 Player.prototype.jumpKey = function () {
   this.counter = 0
   document.onkeydown = function (event) {
+    this.sound = jumpkey.play();
     this.counter++
     if (event.keyCode == UP && (this.y == this.yInitial || this.counter <= 2)) {
       this.y -= 80;
       this.ySpeed -= 10;
     }
-
   }.bind(this);
 }
 
 Player.prototype.move = function () {
   if (this.y == this.yInitial)
     this.counter = 0;
+  
   var gravity = 0.5;
   if (this.y >= this.yInitial) {
     this.ySpeed = 1;

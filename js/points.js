@@ -20,15 +20,14 @@ Points.prototype.draw = function () {
 }
 
 Points.prototype.restPoints = function () {
-  if (this.score >= 2) {
     this.score -= 2;
-  }
 }
 
 Points.prototype.sumPoints = function () {
   if (this.score < 8) {
     this.score++
   }
+  this.sound = pizzaEat.play();
 }
 
 

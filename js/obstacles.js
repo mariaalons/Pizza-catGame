@@ -31,7 +31,7 @@ Obstacles.prototype.randomY = function () {
   }else if( this.y == 1){
     this.y= 250;
   }
-  
+
   if(this.img.avocadoY){
     this.y = this.img.avocadoY;
   }

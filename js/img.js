@@ -21,7 +21,9 @@
   var gameOver = new Image();
   gameOver.src = "img/gameover.png";
   gameOver.name = "gameOver";
-  gameOver.w = 400;
-  gameOver.h = 300;
+  gameOver.w = 100;
+  gameOver.h = 80;
 
-  
+  var background = new Image();
+  background.src = "img/background.png";
+  background.name = "background";
