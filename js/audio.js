@@ -5,8 +5,7 @@ var audioEffects = {
   angryCat: "catBrocoli.mp3",
   avocadoPower: "special.mp3",
   pizzaEat: "pizzaeat.mp3",
-  youWin: "youwin.mp3",
-  youLose: "youlose.mp3"
+  youWin: "youwin.mp3"
 }
 
 var loadedAudios = {}
