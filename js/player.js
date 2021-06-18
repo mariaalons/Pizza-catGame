@@ -61,7 +61,7 @@ Player.prototype.jumpKey = function() {
     document.onkeydown = function(event) {
         this.sound = loadedAudios.jumpkey.play();
         this.counter++
-            if (event.keyCode == UP && (this.y == this.yInitial || this.counter <= 2)) {
+            if (event.keyCode == UP || event.keyCode == 32 && (this.y == this.yInitial || this.counter <= 2)) {
                 this.y -= 80;
                 this.ySpeed -= 10;
             }
