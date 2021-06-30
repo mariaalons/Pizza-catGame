@@ -6,10 +6,6 @@ function Game(canvastv) {
     this.reset();
 }
 
-Game.prototype.gameMenu = function() {
-
-}
-
 Game.prototype.startGame = function() {
     this.image = new Image();
     this.image.src = "/img/inicio.png"

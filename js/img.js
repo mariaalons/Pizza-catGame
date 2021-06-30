@@ -2,8 +2,8 @@ var img = {
     brocoli: {
         src: "img/brocoli.png",
         name: "brocoli",
-        w: 45,
-        h: 55
+        w: 55,
+        h: 50
     },
     pizza: {
         src: "img/pizza.png",

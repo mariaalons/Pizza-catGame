@@ -2,7 +2,7 @@ function Player(game) {
     this.game = game;
     this.x = this.game.canvas.width * 0.1;
 
-    this.yInitial = 340;
+    this.yInitial = 290;
     this.y = this.yInitial;
 
     this.img = new Image();
@@ -38,7 +38,7 @@ Player.prototype.draw = function() {
 
 Player.prototype.catPizza = function() {
     this.img.frame = 1;
-    this.img.frameIndex = 2;
+    this.img.frameIndex = 1;
     this.sy = 400;
 }
 

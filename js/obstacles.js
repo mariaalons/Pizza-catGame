@@ -26,9 +26,9 @@ Obstacles.prototype.move = function() {
 Obstacles.prototype.randomY = function() {
     this.y = Math.round(Math.random())
     if (this.y == 0) {
-        this.y = 370
+        this.y = 340
     } else if (this.y == 1) {
-        this.y = 250;
+        this.y = 230;
     }
 
     if (this.img.avocadoY) {
