@@ -27,5 +27,4 @@ Points.prototype.sumPoints = function() {
     if (this.score < 8) {
         this.score++
     }
-    this.sound = loadedAudios.pizzaEat.play();
 }

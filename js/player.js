@@ -59,7 +59,6 @@ Player.prototype.animateImg = function() {
 Player.prototype.jumpKey = function() {
     this.counter = 0
     document.onkeydown = function(event) {
-        this.sound = loadedAudios.jumpkey.play();
         this.counter++
             if (event.keyCode == UP || event.keyCode == 32 && (this.y == this.yInitial || this.counter <= 2)) {
                 this.y -= 80;

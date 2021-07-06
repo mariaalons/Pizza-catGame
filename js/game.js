@@ -114,7 +114,6 @@ Game.prototype.moveGame = function() {
 Game.prototype.specialPower = function() {
     this.player.catAvocado();
     this.drawGame()
-    this.sound = loadedAudios.avocadoPower.play();
     setTimeout(function() {
         this.player.sy = 200;
     }.bind(this), 5000);
@@ -136,7 +135,6 @@ Game.prototype.stop = function() {
 Game.prototype.gameOver = function() {
     clearInterval(this.interval);
     clearTimeout(this.timeOut)
-    this.sound = loadedAudios.soundTrack.pause();
     var draw = (function(img) {
         this.clear();
         this.ctx.drawImage(img, 0, 0, this.canvas.width, this.canvas.height)
@@ -148,7 +146,6 @@ Game.prototype.gameOver = function() {
 Game.prototype.youWin = function() {
     clearInterval(this.interval);
     clearTimeout(this.timeOut)
-    this.sound = loadedAudios.soundTrack.pause();
     var draw = (function(img) {
         this.clear();
         this.ctx.drawImage(img, 0, 0, this.canvas.width, this.canvas.height)
