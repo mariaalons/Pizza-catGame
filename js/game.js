@@ -20,7 +20,6 @@ Game.prototype.start = function() {
         this.framesCounter++;
 
         this.drawGame();
-        this.sound = loadedAudios.soundTrack.play()
         this.obsCollision();
 
         if (this.points.score < 0) {
@@ -80,7 +79,6 @@ Game.prototype.obsCollision = function() {
             this.player.y + this.player.h - 30 >= obs.y &&
             obs.y + obs.h >= this.player.y))
         if (collisions == false && obs.img.name == "brocoli" && this.player.sy == 200) {
-            this.sound = loadedAudios.angryCat.play();
             this.points.restPoints();
             this.stop()
         } else if (collisions === false && obs.img.name == "pizza") {
@@ -150,7 +148,6 @@ Game.prototype.gameOver = function() {
 Game.prototype.youWin = function() {
     clearInterval(this.interval);
     clearTimeout(this.timeOut)
-    this.sound = loadedAudios.youWin.play();
     this.sound = loadedAudios.soundTrack.pause();
     var draw = (function(img) {
         this.clear();
